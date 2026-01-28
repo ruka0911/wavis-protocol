@@ -101,13 +101,13 @@ This is how WAVIS survives regulation. We implement the Privacy Pools concept (c
 How it works (The Logic)
 Users do not prove "Who they are." They prove "Who they are NOT."
 
-1.Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).
+1. Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).
 
-2.ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:
+2. ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:
 
  "My deposit exists in the vault's history, AND my deposit address is NOT part of the current Sanctions Merkle Tree."
 
-3.Result: The protocol verifies the funds are clean without ever seeing the user's address.
+3. Result: The protocol verifies the funds are clean without ever seeing the user's address.
 
 Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.
 
@@ -142,6 +142,7 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
