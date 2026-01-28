@@ -25,9 +25,9 @@ This leads to two outcomes: nobody uses them (too hard), or only hackers use the
 
 WAVIS treats privacy as **infrastructure**.
 
-* It must be **fast** (Solana-speed).
-* It must be **profitable** (Shadow Yield).
-* It must be **clean** (Proof of Innocence).
+* ⚡️ **Fast:** Built for Solana-speed.
+* 💰 **Profitable:** Generates Shadow Yield while shielded.
+* ⚖️ **Clean:** Uses Proof of Innocence to stay compliant.
 
 **Our Vision:**
 If perfect ZK privacy existed today, how should it feel to use?
@@ -47,17 +47,17 @@ Instead of issuing traceable SPL tokens (like wUSDC), WAVIS uses an **Internal L
 // The "Invisible" Ledger
 #[account]
 pub struct UserVault {
-    pub owner: Pubkey,         // Authenticated via Signature (ECIES)
-    pub shares: u64,           // Internal balance representation
-    pub last_deposit: i64,     // For Yield calculation
+    pub owner: Pubkey,            // Authenticated via Signature (ECIES)
+    pub shares: u64,              // Internal balance representation
+    pub last_deposit: i64,        // For Yield calculation
     pub nullifier_hash: [u8; 32], // Anti-double-spend mechanism
 }
 
 #[account]
 pub struct GlobalConfig {
     pub total_shares: u64,
-    pub exchange_rate: u64,    // Increases over time (Yield)
-    pub compliance_root: [u8; 32], // Merkle Root of Sanctioned Addresses
+    pub exchange_rate: u64,       // Increases over time (Yield)
+    pub compliance_root: [u8; 32],// Merkle Root of Sanctioned Addresses
 }
 B. The Transaction Flowコード スニペットsequenceDiagram
     participant User as 👤 User
@@ -78,7 +78,7 @@ B. The Transaction Flowコード スニペットsequenceDiagram
     Note over User, Vault: Phase 3: WITHDRAW (Unshield)
     User->>UI: Request Withdrawal
     
-    rect rgb(20, 40, 20)
+    rect rgb(20, 20, 20)
         Note right of UI: 🔐 Proof of Innocence (Mocked)
         UI->>UI: Generate ZK Proof:
         UI->>UI: 1. I own the shares
@@ -88,23 +88,5 @@ B. The Transaction Flowコード スニペットsequenceDiagram
     UI->>Vault: Submit Proof & Withdrawal Request
     Vault->>Vault: Verify Proof & Burn Shares
     Vault-->>User: Transfer 105 USDC (Principal + Yield)
-3. The "Killer Feature": Proof of Innocence ⚖️This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.How it works (The Logic)Users do not prove "Who they are." They prove "Who they are NOT."Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:"My deposit exists in the vault's history, AND my deposit address is NOT part of the current Sanctions Merkle Tree."Result: The protocol verifies the funds are clean without ever seeing the user's address.Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.
+3. The "Killer Feature": Proof of Innocence ⚖️This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.How it works (The Logic)Users do not prove "Who they are." They prove "Who they are NOT."Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:"My deposit exists in the vault's history, AND my deposit address is NOT part of the current Sanctions Merkle Tree."Result: The protocol verifies the funds are clean without ever seeing the user's address.Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.4. Why Mock the ZK Circuit? (Honesty Statement)We have chosen to simulate the ZK verification layer for this hackathon.This is a safety boundary, not a shortcut.Security: Shipping unaudited ZK circuits puts real user funds at risk.Focus: We prioritized solving the UX and Economic Model (Yield) first.Cost: Real-time OFAC data integration requires enterprise API keys.Our goal is to demonstrate the Architecture and User Experience of a production-ready system.5. Implementation StatusFeatureHackathon Version (v0.1)Production Version (v1.0)Vault Logic✅ Real On-Chain (Devnet)✅ Real On-Chain (Mainnet)Deposit/Withdraw✅ Real Anchor Program✅ Real Anchor ProgramInternal Ledger✅ Implemented (PDA)✅ Implemented (Encrypted PDA)Shadow Yield🚧 Simulated (Rate += 0.001)🔄 Live CPI to Save/KaminoCompliance🚧 Mocked Filter🔒 ZK Proof of InnocenceInterface✅ Neo-Swiss Style UI✅ Mobile App & SDK6. Roadmap: Zero to "Swiss Bank"Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).🏁 Hackathon DisclaimerThis repository contains mocked components clearly marked as such.No user funds are at risk. This is a design freeze for a future production system.Built with ❤️ for the Solana Renaissance.
 
-4. Why Mock the ZK Circuit? (Honesty Statement)We have chosen to simulate the ZK verification layer for this hackathon.This is a safety boundary, not a shortcut.Security: Shipping unaudited ZK circuits puts real user funds at risk.Focus: We prioritized solving the UX and Economic Model (Yield) first.Cost: Real-time OFAC data integration requires enterprise API keys.Our goal is to demonstrate the Architecture and User Experience of a production-ready system.
-
-5. Implementation Status
-Feature,Hackathon Version (v0.1),Production Version (v1.0)
-Vault Logic,✅ Real On-Chain (Devnet),✅ Real On-Chain (Mainnet)
-Deposit/Withdraw,✅ Real Anchor Program,✅ Real Anchor Program
-Internal Ledger,✅ Implemented (PDA),✅ Implemented (Encrypted PDA)
-Shadow Yield,🚧 Simulated (Rate += 0.001),🔄 Live CPI to Save/Kamino
-Compliance,🚧 Mocked Filter,🔒 ZK Proof of Innocence
-Interface,✅ Neo-Swiss Style UI,✅ Mobile App & SDK
-
-6. Roadmap: Zero to "Swiss Bank"
-Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.
-Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.
-Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.
-Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).
-
-🏁 Hackathon DisclaimerThis repository contains mocked components clearly marked as such.No user funds are at risk. This is a design freeze for a future production system.Built with ❤️ for the Solana Renaissance.
