@@ -71,10 +71,10 @@ sequenceDiagram
     participant Vault as 🏛️ Solana Vault
 
     Note over User, Vault: Phase 1: DEPOSIT (Shield)
-    User->>UI: Input 100 USDC
+    User->>UI: Input 1 SOL
     UI->>Oracle: Check Source Address (Ingress Filtering)
     Oracle-->>UI: OK (Not Sanctioned)
-    UI->>Vault: Transfer 100 USDC
+    UI->>Vault: Transfer 1 SOL
     Vault->>Vault: Mint Shares (Internal Ledger)
     
     Note over User, Vault: Phase 2: YIELD (Time Passes)
@@ -92,7 +92,7 @@ sequenceDiagram
     
     UI->>Vault: Submit Proof & Withdrawal Request
     Vault->>Vault: Verify Proof & Burn Shares
-    Vault-->>User: Transfer 105 USDC (Principal + Yield)
+    Vault-->>User: Transfer 1.005 SOL (Principal + Yield)
 ```
 
 ## 3. The "Killer Feature": Proof of Innocence ⚖️
@@ -142,6 +142,7 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
