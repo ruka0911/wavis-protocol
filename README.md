@@ -114,9 +114,9 @@ Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI
 ## 4. Why Mock the ZK Circuit? (Honesty Statement)
 We have chosen to simulate the ZK verification layer for this hackathon. This is a safety boundary, not a shortcut.
 
-*Security: Shipping unaudited ZK circuits puts real user funds at risk.
-*Focus: We prioritized solving the UX and Economic Model (Yield) first.
-*Cost: Real-time OFAC data integration requires enterprise API keys.
+* Security: Shipping unaudited ZK circuits puts real user funds at risk.
+* Focus: We prioritized solving the UX and Economic Model (Yield) first.
+* Cost: Real-time OFAC data integration requires enterprise API keys.
 
 Our goal is to demonstrate the Architecture and User Experience of a production-ready system.
 
@@ -133,15 +133,16 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 
 ## 6. Roadmap: Zero to "Swiss Bank"
 
-*Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.
-*Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.
-*Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.
-*Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).
+* Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.
+* Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.
+* Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.
+* Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).
 
-🏁 Hackathon Disclaimer
+## 🏁 Hackathon Disclaimer
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
