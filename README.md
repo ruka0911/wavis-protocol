@@ -120,15 +120,16 @@ We have chosen to simulate the ZK verification layer for this hackathon. This is
 
 Our goal is to demonstrate the Architecture and User Experience of a production-ready system.
 
-5. Implementation Status
+## 5. Implementation Status
 
-Feature,　　　　　　Hackathon Version (v0.1),　　Production Version (v1.0)
-Vault Logic,　　　　✅ Real On-Chain (Devnet),　✅ Real On-Chain (Mainnet)
-Deposit/Withdraw,　✅ Real Anchor Program,　　　✅ Real Anchor Program
-Internal Ledger,　　✅ Implemented (PDA),　　　✅ Implemented (Encrypted PDA)
-Shadow Yield,　　　🚧 Simulated (Rate += 0.001),🔄 Live CPI to Save/Kamino
-Compliance,　　　　🚧 Mocked Filter,　　　　　　　🔒 ZK Proof of Innocence
-Interface,　　　　✅ Neo-Swiss Style UI,　　　　　✅ Mobile App & SDK
+| Feature | Hackathon Version (v0.1) | Production Version (v1.0) |
+| :--- | :--- | :--- |
+| **Vault Logic** | ✅ Real On-Chain (Devnet) | ✅ Real On-Chain (Mainnet) |
+| **Deposit/Withdraw** | ✅ Real Anchor Program | ✅ Real Anchor Program |
+| **Internal Ledger** | ✅ Implemented (PDA) | ✅ Implemented (Encrypted PDA) |
+| **Shadow Yield** | 🚧 Simulated (Rate += 0.001) | 🔄 Live CPI to Save/Kamino |
+| **Compliance** | 🚧 Mocked Filter | 🔒 ZK Proof of Innocence |
+| **Interface** | ✅ Neo-Swiss Style UI | ✅ Mobile App & SDK |
 
 6. Roadmap: Zero to "Swiss Bank"
 
@@ -141,6 +142,7 @@ Interface,　　　　✅ Neo-Swiss Style UI,　　　　　✅ Mobile App & SDK
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
