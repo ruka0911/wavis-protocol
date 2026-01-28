@@ -1,7 +1,9 @@
 # WAVIS Protocol 🛡️
+
 ### The First "Compliance-Ready" Shielded Pool on Solana
 
 > **⚠️ Hackathon Status: Architectural Prototype**
+>
 > This repository demonstrates the **UX**, **Economics**, and **Compliance Architecture** of the WAVIS Protocol.
 > While the deposit layer interacts with the Solana Devnet, the ZK verification and Proof-of-Innocence layers are **simulated (mocked)** to demonstrate the user flow without risking funds in unaudited circuits.
 
@@ -22,6 +24,7 @@ Most privacy protocols focus on cryptography but neglect **UX** and **Regulation
 This leads to two outcomes: nobody uses them (too hard), or only hackers use them (get banned).
 
 WAVIS treats privacy as **infrastructure**.
+
 * It must be **fast** (Solana-speed).
 * It must be **profitable** (Shadow Yield).
 * It must be **clean** (Proof of Innocence).
@@ -36,9 +39,8 @@ It should feel like a bank vault, not a hacker's terminal.
 
 We utilize a hybrid architecture: **On-Chain Vaults** for holding assets, and **Client-Side ZK** for privacy and compliance.
 
-
-
 ### A. The Core Logic (Anchor Program)
+
 Instead of issuing traceable SPL tokens (like wUSDC), WAVIS uses an **Internal Ledger** based on PDAs (Program Derived Addresses).
 
 ```rust
@@ -86,4 +88,23 @@ B. The Transaction Flowコード スニペットsequenceDiagram
     UI->>Vault: Submit Proof & Withdrawal Request
     Vault->>Vault: Verify Proof & Burn Shares
     Vault-->>User: Transfer 105 USDC (Principal + Yield)
-3. The "Killer Feature": Proof of Innocence ⚖️This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.How it works (The Logic)Users do not prove "Who they are." They prove "Who they are NOT."Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:"My deposit exists in the vault's history, AND my deposit address is NOT part of the current Sanctions Merkle Tree."Result: The protocol verifies the funds are clean without ever seeing the user's address.Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.4. Why Mock the ZK Circuit? (Honesty Statement)We have chosen to simulate the ZK verification layer for this hackathon.This is a safety boundary, not a shortcut.Security: Shipping unaudited ZK circuits puts real user funds at risk.Focus: We prioritized solving the UX and Economic Model (Yield) first.Cost: Real-time OFAC data integration requires enterprise API keys.Our goal is to demonstrate the Architecture and User Experience of a production-ready system.5. Implementation StatusFeatureHackathon Version (v0.1)Production Version (v1.0)Vault Logic✅ Real On-Chain (Devnet)✅ Real On-Chain (Mainnet)Deposit/Withdraw✅ Real Anchor Program✅ Real Anchor ProgramInternal Ledger✅ Implemented (PDA)✅ Implemented (Encrypted PDA)Shadow Yield🚧 Simulated (Rate += 0.001)🔄 Live CPI to Save/KaminoCompliance🚧 Mocked Filter🔒 ZK Proof of InnocenceInterface✅ Neo-Swiss Style UI✅ Mobile App & SDK6. Roadmap: Zero to "Swiss Bank"Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).🏁 Hackathon DisclaimerThis repository contains mocked components clearly marked as such.No user funds are at risk. This is a design freeze for a future production system.Built with ❤️ for the Solana Renaissance.
+3. The "Killer Feature": Proof of Innocence ⚖️This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.How it works (The Logic)Users do not prove "Who they are." They prove "Who they are NOT."Merkle Tree of Sanctions: We maintain an on-chain Merkle Root derived from the OFAC Sanctions List and major hack addresses (fed by Chainalysis/TRM Labs oracles).ZK-Circuit: When withdrawing, the user generates a Zero-Knowledge Proof that asserts:"My deposit exists in the vault's history, AND my deposit address is NOT part of the current Sanctions Merkle Tree."Result: The protocol verifies the funds are clean without ever seeing the user's address.Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.
+
+4. Why Mock the ZK Circuit? (Honesty Statement)We have chosen to simulate the ZK verification layer for this hackathon.This is a safety boundary, not a shortcut.Security: Shipping unaudited ZK circuits puts real user funds at risk.Focus: We prioritized solving the UX and Economic Model (Yield) first.Cost: Real-time OFAC data integration requires enterprise API keys.Our goal is to demonstrate the Architecture and User Experience of a production-ready system.
+
+5. Implementation Status
+Feature,Hackathon Version (v0.1),Production Version (v1.0)
+Vault Logic,✅ Real On-Chain (Devnet),✅ Real On-Chain (Mainnet)
+Deposit/Withdraw,✅ Real Anchor Program,✅ Real Anchor Program
+Internal Ledger,✅ Implemented (PDA),✅ Implemented (Encrypted PDA)
+Shadow Yield,🚧 Simulated (Rate += 0.001),🔄 Live CPI to Save/Kamino
+Compliance,🚧 Mocked Filter,🔒 ZK Proof of Innocence
+Interface,✅ Neo-Swiss Style UI,✅ Mobile App & SDK
+
+6. Roadmap: Zero to "Swiss Bank"
+Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.
+Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.
+Phase 3 (Compliance): Connect Chainlink Oracle for real-time Sanctions List.
+Phase 4 (Launch): Mainnet launch with "Invited Users Only" (Closed Alpha).
+
+🏁 Hackathon DisclaimerThis repository contains mocked components clearly marked as such.No user funds are at risk. This is a design freeze for a future production system.Built with ❤️ for the Solana Renaissance.
