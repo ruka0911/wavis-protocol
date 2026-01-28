@@ -59,10 +59,11 @@ pub struct GlobalConfig {
     pub exchange_rate: u64,       // Increases over time (Yield)
     pub compliance_root: [u8; 32],// Merkle Root of Sanctioned Addresses
 }
-
+```
 
 B. The Transaction Flow
 
+```mermaid
 sequenceDiagram
     participant User as 👤 User
     participant UI as 🖥️ WAVIS Client
@@ -92,6 +93,7 @@ sequenceDiagram
     UI->>Vault: Submit Proof & Withdrawal Request
     Vault->>Vault: Verify Proof & Burn Shares
     Vault-->>User: Transfer 105 USDC (Principal + Yield)
+```
 
 3. The "Killer Feature": Proof of Innocence ⚖️
 This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.
@@ -139,5 +141,6 @@ Interface,　　　　✅ Neo-Swiss Style UI,　　　　　✅ Mobile App & SDK
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
