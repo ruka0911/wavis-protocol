@@ -95,7 +95,7 @@ sequenceDiagram
     Vault-->>User: Transfer 105 USDC (Principal + Yield)
 ```
 
-3. The "Killer Feature": Proof of Innocence ⚖️
+## 3. The "Killer Feature": Proof of Innocence ⚖️
 This is how WAVIS survives regulation. We implement the Privacy Pools concept (championed by Vitalik Buterin) adapted for Solana.
 
 How it works (The Logic)
@@ -111,7 +111,7 @@ Users do not prove "Who they are." They prove "Who they are NOT."
 
 Note: In this Hackathon version (v0.1), the ZK verification is simulated. The UI demonstrates the flow of checking against a mock Allowlist.
 
-4. Why Mock the ZK Circuit? (Honesty Statement)
+## 4. Why Mock the ZK Circuit? (Honesty Statement)
 We have chosen to simulate the ZK verification layer for this hackathon. This is a safety boundary, not a shortcut.
 
 *Security: Shipping unaudited ZK circuits puts real user funds at risk.
@@ -131,7 +131,7 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 | **Compliance** | 🚧 Mocked Filter | 🔒 ZK Proof of Innocence |
 | **Interface** | ✅ Neo-Swiss Style UI | ✅ Mobile App & SDK |
 
-6. Roadmap: Zero to "Swiss Bank"
+## 6. Roadmap: Zero to "Swiss Bank"
 
 *Phase 1 (Current): Architectural Prototype. Real Vault, Mocked ZK.
 *Phase 2 (Audit): Integrate Light Protocol for compression. Audit the Vault.
@@ -142,6 +142,7 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
