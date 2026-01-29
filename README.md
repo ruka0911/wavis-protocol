@@ -2,6 +2,12 @@
 
 ### The First "Compliance-Ready" Shielded Pool on Solana
 
+## 🎥 Demo Video
+> **Watch the full walkthrough here:**
+> [**▶️ Click to Watch on YouTube**](https://www.youtube.com/watch?v=Rb-UO8K60EY)
+
+---
+
 > **⚠️ Hackathon Status: Architectural Prototype**
 >
 > This repository demonstrates the **UX**, **Economics**, and **Compliance Architecture** of the WAVIS Protocol.
@@ -142,6 +148,7 @@ Our goal is to demonstrate the Architecture and User Experience of a production-
 This repository contains mocked components clearly marked as such. No user funds are at risk. This is a design freeze for a future production system.
 
 Built with ❤️ for the Solana Renaissance.
+
 
 
 
